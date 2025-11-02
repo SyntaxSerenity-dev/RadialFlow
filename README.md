@@ -1,8 +1,8 @@
-# 🎯 CircularMenuLib
+# 🎯 RadialFlow
 
 > **Professional circular menu library with advanced customization and intelligent UX optimizations**
 
-[![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://github.com/SyntaxSerenity-dev/circular-menu-lib)
+[![Version](https://img.shields.io/badge/version-2.1.9-blue.svg)](https://github.com/SyntaxSerenity-dev/circular-menu-lib)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Author](https://img.shields.io/badge/author-syntax%20serenity-green.svg)](mailto:fs.developerfullstack@gmail.com)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
@@ -29,9 +29,9 @@
 
 ## 🎯 Overview
 
-**CircularMenuLib** is a powerful and flexible JavaScript library for creating beautiful, interactive circular menus with multiple levels of customization. It provides advanced features like automatic viewport adjustment, custom HTML elements, multiple animation effects, and various layout options.
+**RadialFlow** is a powerful and flexible JavaScript library for creating beautiful, interactive circular menus with multiple levels of customization. It provides advanced features like automatic viewport adjustment, custom HTML elements, multiple animation effects, and various layout options.
 
-### 🎯 What makes CircularMenuLib special?
+### 🎯 What makes RadialFlow special?
 
 - **🎨 Highly Customizable**: Multiple menu types, animation effects, and layout options
 - **📐 Smart Positioning**: Automatic viewport adjustment to prevent overflow
@@ -76,23 +76,23 @@
 
 ```html
 <!-- Add CSS -->
-<link rel="stylesheet" href="path/to/CircularMenuLib.css" />
+<link rel="stylesheet" href="path/to/radialFlow.css" />
 
 <!-- Add JavaScript -->
-<script src="path/to/CircularMenuLib.js"></script>
+<script src="path/to/radialFlow.js"></script>
 ```
 
 ### 2. As ES6 Module
 
 ```javascript
-import CircularMenu from "./CircularMenuLib.js";
+import CircularMenu from "./radialFlow.js";
 ```
 
 ### 3. Via CDN (when available)
 
 ```html
-<link rel="stylesheet" href="https://cdn.example.com/CircularMenuLib.css" />
-<script src="https://cdn.example.com/CircularMenuLib.js"></script>
+<link rel="stylesheet" href="https://cdn.example.com/radialFlow.css" />
+<script src="https://cdn.example.com/radialFlow.js"></script>
 ```
 
 ---
