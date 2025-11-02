@@ -1,0 +1,1063 @@
+/**
+ * 
+ * ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+ * ║                                                                                                                   ║
+ * ║  ███████╗██╗   ██╗███╗   ██╗████████╗ █████╗ ██╗  ██╗███████╗█████╗██████╗ █████╗███╗   ██╗██╗████████╗██╗   ██╗  ║
+ * ║  ██╔════╝╚██╗ ██╔╝████╗  ██║╚══██╔══╝██╔══██╗╚██╗██╔╝██╔════╝██╔══╝██╔══██╗██╔══╝████╗  ██║██║╚══██╔══╝╚██╗ ██╔╝  ║
+ * ║  ███████╗ ╚████╔╝ ██╔██╗ ██║   ██║   ███████║ ╚███╔╝ ███████╗█████╗██████╔╝█████╗██╔██╗ ██║██║   ██║    ╚████╔╝   ║
+ * ║  ╚════██║  ╚██╔╝  ██║╚██╗██║   ██║   ██╔══██║ ██╔██╗ ╚════██║██╔══╝██╔══██╗██╔══╝██║╚██╗██║██║   ██║     ╚██╔╝    ║
+ * ║  ███████║   ██║   ██║ ╚████║   ██║   ██║  ██║██╔╝ ██╗███████║█████╗██║  ██║█████╗██║ ╚████║██║   ██║      ██║     ║
+ * ║  ╚══════╝   ╚═╝   ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚════╝╚═╝  ╚═╝╚════╝╚═╝  ╚═══╝╚═╝   ╚═╝      ╚═╝     ║
+ * ║                                R E L I A B I L I T Y   I N   E V E R Y   L I N E                                  ║
+ * ║                                              O F   C O D E                                                        ║
+ * ║                                                                                                                   ║
+ * ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+ * 
+ * File: CircularMenuLib.css
+ * Description: 
+ *
+ *     Professional circular menu library stylesheet with comprehensive styling system for interactive circular menus.
+ *  Provides complete visual design system including four menu types (Classic, Labeled, Modern, Corner), seven animation
+ *  effects, responsive layouts, accessibility features, and advanced styling options. Features GPU-accelerated
+ *  animations, smooth transitions, hover effects, dimming visual hierarchy, and comprehensive responsive design for
+ *  optimal user experience across all devices and screen sizes.
+ * 
+ *  Key Features:
+ * 
+ *  - Four menu type styles: Classic, Labeled, Modern, Corner with distinct visual identities
+ *  - Seven animation effect keyframes: Clockwise, Counterclockwise, Radial, Scale-Fade, Bounce, Spiral, Wave
+ *  - Nine layout-specific styling options for different menu arrangements
+ *  - GPU-accelerated transforms using translate3d for optimal performance
+ *  - Smooth CSS transitions and cubic-bezier easing functions
+ *  - Interactive hover states with scale transforms and color transitions
+ *  - Visual hierarchy dimming effects for active submenu contexts
+ *  - Responsive design with mobile and tablet optimizations
+ *  - Accessibility features including focus states and reduced motion support
+ *  - Viewport adjustment styling for items that are repositioned
+ *  - Navigation button styling for pagination controls
+ * 
+ * Structure:
+ *
+ *  - Core Styles (center button, container, menu wrapper, levels)
+ *  - Menu Item Styles (buttons, labels, submenu indicators)
+ *  - Animation Effects (keyframes and animation classes)
+ *  - Menu Type Variants (Classic, Labeled, Modern, Corner specific styles)
+ *  - Layout-Specific Styles (Side Arc, Radial Line, Floating Grid)
+ *  - Navigation Controls (buttons, arrows, pagination)
+ *  - Visual Effects (dimming, active states, hover effects)
+ *  - Responsive Design (mobile, tablet breakpoints)
+ *  - Accessibility (focus states, reduced motion)
+ *  - Utility Classes (no-select, hidden, disabled)
+ *
+ * Dependencies: 
+ * 
+ *  - CSS3 Transforms and Transitions (for animations and positioning)
+ *  - CSS Custom Properties (for dynamic theming, optional)
+ *  - Font Awesome (optional, for icon support)
+ *  - CSS Grid and Flexbox (for layout alignment)
+ * 
+ * @description Professional circular menu library stylesheet with comprehensive styling system
+ * @version 2.1.9
+ * @author Syntax Serenity <fs.developerfullstack@gmail.com>
+ * @license MIT
+ * @copyright 2025 Syntax Serenity
+ * @repository https://github.com/SyntaxSerenity-dev/circular-menu-lib
+ * @website https://syntaxserenity.dev
+ * 
+ * Released under the MIT License - see LICENSE file for details
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+*/
+
+/* ============================================
+CORE STYLES - CENTER BUTTON
+============================================ */
+.cmenu-center-button {
+    position: relative;
+    background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+}
+
+.cmenu-center-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+}
+
+.cmenu-center-button:hover::before {transform: translate(-50%, -50%) scale(1.5);}
+.cmenu-center-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(45, 80, 22, 0.4);
+}
+
+.cmenu-center-button.cmenu-active {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+    transform: rotate(45deg);
+}
+
+.cmenu-center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: white;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+/* ============================================
+CONTAINER
+============================================ */
+
+.cmenu-container {
+    position: relative;
+    display: inline-block;
+    pointer-events: all;
+}
+
+.cmenu-circular-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    width: 500px;
+    height: 500px;
+}
+
+.cmenu-container.cmenu-open .cmenu-circular-menu {pointer-events: all;}
+
+/* ============================================
+  LEVELS
+============================================ */
+
+.cmenu-level {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: all;
+}
+
+.cmenu-level-0 { z-index: 150; }
+.cmenu-level-1 { z-index: 160; }
+.cmenu-level-2 { z-index: 170; }
+.cmenu-level-3 { z-index: 180; }
+.cmenu-level-4 { z-index: 190; }
+.cmenu-level-5 { z-index: 200; }
+.cmenu-level-6 { z-index: 210; }
+.cmenu-level-7 { z-index: 220; }
+.cmenu-level-8 { z-index: 230; }
+.cmenu-level-9 { z-index: 240; }
+
+/* ============================================
+MENU ITEMS
+============================================ */
+.cmenu-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cmenu-open .cmenu-item {pointer-events: all;}
+.cmenu-open .cmenu-item.cmenu-nav-button{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cmenu-item-button {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #6b8e23 0%, #4a7c59 100%);
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cmenu-item-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.cmenu-item-button:hover::before {
+    width: 120%;
+    height: 120%;
+}
+
+.cmenu-item-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: #ff6b35;
+}
+
+/* Submenu Indicator */
+.cmenu-item-button.cmenu-has-submenu::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 12px;
+    height: 12px;
+    background: #ff6b35;
+    border-radius: 50%;
+    border: 2px solid white;
+    z-index: 10;
+}
+
+/* Active State */
+.cmenu-item-active .cmenu-item-button {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+    transform: scale(1.2);
+}
+
+/* ============================================
+NAVIGATION BUTTONS
+============================================ */
+.cmenu-nav-button .cmenu-nav-button.cmenu-nav-next { background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);}
+
+.cmenu-nav-button .cmenu-item-button:hover {background: linear-gradient(135deg, #ffd54f 0%, #ffc107 100%);}
+
+.cmenu-nav-prev .cmenu-item-button {background: linear-gradient(135deg, #6c757d 0%, #495057 100%);}
+
+.cmenu-nav-prev .cmenu-item-button:hover {background: linear-gradient(135deg, #868e96 0%, #6c757d 100%);}
+
+/* ============================================
+ANIMATION EFFECTS
+============================================ */
+
+/* Clockwise Effect - Animação Horária */
+@keyframes cmenu-clockwise {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(-90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+.cmenu-effect-clockwise {animation: cmenu-clockwise 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;}
+
+/* Counterclockwise Effect - Animação Anti-horária */
+@keyframes cmenu-counterclockwise {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+.cmenu-effect-counterclockwise {animation: cmenu-counterclockwise 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;}
+
+/* Radial Effect - Propagação Elástica (Bounce) */
+@keyframes cmenu-radial {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    85% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.cmenu-effect-radial {animation: cmenu-radial 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;}
+
+/* Scale Fade Effect - Escala com Fade Suave */
+@keyframes cmenu-scale-fade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+        filter: blur(4px);
+    }
+    60% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
+    }
+}
+
+.cmenu-effect-scale-fade {animation: cmenu-scale-fade 0.5s ease-out forwards;}
+
+/* Bounce Effect - Efeito Elástico */
+@keyframes cmenu-bounce {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(0.9);
+    }
+    85% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.cmenu-effect-bounce {animation: cmenu-bounce 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;}
+
+/* Spiral Effect - Efeito Espiral (para Labeled) */
+@keyframes cmenu-spiral {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15) rotate(20deg);
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(0.95) rotate(-10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+.cmenu-effect-spiral {animation: cmenu-spiral 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;}
+
+/* Wave Effect - Efeito de Onda (alternativa para Labeled) */
+@keyframes cmenu-wave {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) translateY(-30px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1) translateY(10px);
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(0.95) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) translateY(0);
+    }
+}
+
+.cmenu-effect-wave {animation: cmenu-wave 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;}
+
+
+ /* Animação especial para arco lateral do Labeled */
+@keyframes cmenu-arc-expand {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) translateX(-50px);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1) translateX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) translateX(0);
+    }
+}
+
+.cmenu-type-labeled .cmenu-level-1 .cmenu-effect-spiral,
+.cmenu-type-labeled .cmenu-level-2 .cmenu-effect-spiral,
+.cmenu-type-labeled .cmenu-level-3 .cmenu-effect-spiral {
+    animation: cmenu-arc-expand 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+/* ============================================
+DIMMING EFFECT
+============================================ */
+
+.cmenu-dimmed {
+    opacity: 0.4 !important;
+    filter: blur(1px);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.cmenu-dimmed:hover {
+    opacity: 0.6 !important;
+    filter: blur(0.5px);
+}
+
+.cmenu-item-active {
+    z-index: 999 !important;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+/* ============================================
+  LABELS
+============================================ */
+.cmenu-item-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(45, 80, 22, 0.95);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.cmenu-item-button:hover + .cmenu-item-label {
+    opacity: 1;
+    bottom: -35px;
+}
+
+/* ============================================
+NAVIGATION BUTTONS
+============================================ */
+.cmenu-nav-button .cmenu-item-button {background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);}
+
+.cmenu-nav-button .cmenu-item-button:hover {background: linear-gradient(135deg, #ffd54f 0%, #ffc107 100%);}
+
+.cmenu-nav-prev .cmenu-item-button {background: linear-gradient(135deg, #6c757d 0%, #495057 100%);}
+
+.cmenu-nav-prev .cmenu-item-button:hover {background: linear-gradient(135deg, #868e96 0%, #6c757d 100%);}
+
+/* ============================================
+  ARROW NAVIGATION (for corner type)
+============================================ */
+.cmenu-arrow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 18px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s ease;
+    z-index: 300;
+    animation: pulse-arrow 2s ease-in-out infinite;
+}
+
+.cmenu-arrow:hover {
+    background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+    transform: scale(1.15);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+    animation: none;
+}
+
+.cmenu-arrow-prev {
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%);
+}
+
+.cmenu-arrow-next {
+    top: 50%;
+    right: -80px;
+    transform: translateY(-50%);
+}
+
+@keyframes pulse-arrow {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 6px 18px rgba(255, 107, 107, 0.4);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+    }
+}
+
+/* ============================================
+  ANIMATIONS
+============================================ */
+
+@keyframes cmenu-fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.cmenu-animate-in {animation: cmenu-fade-in 0.3s ease forwards;}
+
+/* ============================================
+MENU TYPE: LABELED
+============================================ */
+
+.cmenu-type-labeled .cmenu-center-button {
+    background: white;
+    border: 3px solid #4a5568;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cmenu-type-labeled .cmenu-center-button .cmenu-center-icon {color: #4a5568;}
+
+.cmenu-type-labeled .cmenu-center-button.cmenu-active {
+    background: #e53e3e;
+    border-color: #c53030;
+}
+
+.cmenu-type-labeled .cmenu-center-button.cmenu-active .cmenu-center-icon {color: white;}
+
+.cmenu-type-labeled .cmenu-item-button {
+    background: #4a5568;
+    border: 2px solid #e2e8f0;
+    flex-direction: column;
+}
+
+.cmenu-type-labeled .cmenu-item-button:hover {
+    background: #2d3748;
+    border-color: #4299e1;
+}
+
+.cmenu-type-labeled .cmenu-item-button.cmenu-has-submenu::after {background: #38a169;}
+
+.cmenu-type-labeled .cmenu-button-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-top: 2px;
+    color: white;
+}
+
+/* ============================================
+  MENU TYPE: LABELED - SUBMENU ARC STRUCTURE
+============================================ */
+
+/* Estilos especiais para submenus do Labeled (níveis 2+) */
+.cmenu-type-labeled .cmenu-level-1 .cmenu-item,
+.cmenu-type-labeled .cmenu-level-2 .cmenu-item,
+.cmenu-type-labeled .cmenu-level-3 .cmenu-item,
+.cmenu-type-labeled .cmenu-level-4 .cmenu-item {
+    width: 55px;
+    height: 55px;
+}
+
+.cmenu-type-labeled .cmenu-level-1 .cmenu-item-button,
+.cmenu-type-labeled .cmenu-level-2 .cmenu-item-button,
+.cmenu-type-labeled .cmenu-level-3 .cmenu-item-button,
+.cmenu-type-labeled .cmenu-level-4 .cmenu-item-button {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+    border: 2px solid #e2e8f0;
+    font-size: 1.2rem;
+}
+
+.cmenu-type-labeled .cmenu-level-1 .cmenu-item-button:hover,
+.cmenu-type-labeled .cmenu-level-2 .cmenu-item-button:hover,
+.cmenu-type-labeled .cmenu-level-3 .cmenu-item-button:hover,
+.cmenu-type-labeled .cmenu-level-4 .cmenu-item-button:hover {
+    background: linear-gradient(135deg, #2f855a 0%, #276749 100%);
+    border-color: #68d391;
+}
+
+/* Linha conectora visual (opcional) */
+.cmenu-type-labeled .cmenu-level-1::before,
+.cmenu-type-labeled .cmenu-level-2::before,
+.cmenu-type-labeled .cmenu-level-3::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(56, 161, 105, 0.3) 0%, 
+        rgba(56, 161, 105, 0.6) 50%, 
+        rgba(56, 161, 105, 0.3) 100%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Indicador de arco */
+.cmenu-type-labeled .cmenu-level-1::after,
+.cmenu-type-labeled .cmenu-level-2::after,
+.cmenu-type-labeled .cmenu-level-3::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(50% + 140px);
+    width: 120px;
+    height: 120px;
+    border: 2px dashed rgba(56, 161, 105, 0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+/* ============================================
+  MENU TYPE: MODERN
+============================================ */
+
+.cmenu-type-modern .cmenu-center-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.cmenu-type-modern .cmenu-center-button.cmenu-active {background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);}
+
+.cmenu-type-modern .cmenu-item-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.cmenu-type-modern .cmenu-item-button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    border-color: #f093fb;
+}
+
+.cmenu-type-modern .cmenu-item-button.cmenu-has-submenu::after {background: #f093fb;}
+
+/* Modern concentric circles effect */
+.cmenu-type-modern .cmenu-level-1::before,
+.cmenu-type-modern .cmenu-level-1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px dashed rgba(102, 126, 234, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-circle 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.cmenu-type-modern .cmenu-level-1::before {
+    width: 240px;
+    height: 240px;
+}
+
+.cmenu-type-modern .cmenu-level-1::after {
+    width: 400px;
+    height: 400px;
+    animation-delay: 0.5s;
+}
+
+@keyframes pulse-circle {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+  MENU TYPE: CORNER
+============================================ */
+
+.cmenu-type-corner .cmenu-center-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.cmenu-type-corner .cmenu-center-button.cmenu-active {background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);}
+
+.cmenu-type-corner .cmenu-item-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.cmenu-type-corner .cmenu-item-button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    border-color: #f093fb;
+}
+/* ============================================
+  SUBMENU LAYOUTS - ESTRUTURAS ALTERNATIVAS
+============================================ */
+
+/* Layout: Side Arc (Arco Lateral) */
+.cmenu-layout-side-arc .cmenu-item {
+    width: 55px;
+    height: 55px;
+}
+
+.cmenu-layout-side-arc .cmenu-item-button {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    box-shadow: 0 4px 15px rgba(56, 161, 105, 0.3);
+}
+
+.cmenu-layout-side-arc .cmenu-item-button:hover {
+    background: linear-gradient(135deg, #2f855a 0%, #276749 100%);
+    border-color: #68d391;
+    transform: scale(1.2);
+}
+
+/* Layout: Radial Line (Linha Radial) */
+.cmenu-layout-radial-line .cmenu-item {
+    width: 50px;
+    height: 50px;
+}
+
+.cmenu-layout-radial-line .cmenu-item-button {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+}
+
+.cmenu-layout-radial-line .cmenu-item-button:hover {
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    border-color: #90cdf4;
+    transform: scale(1.2);
+}
+
+/* Layout: Floating Grid (Grade Flutuante) */
+.cmenu-layout-floating-grid .cmenu-item {
+    width: 52px;
+    height: 52px;
+}
+
+.cmenu-layout-floating-grid .cmenu-item-button {
+    background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(159, 122, 234, 0.3);
+}
+
+.cmenu-layout-floating-grid .cmenu-item-button:hover {
+    background: linear-gradient(135deg, #805ad5 0%, #6b46c1 100%);
+    border-color: #d6bcfa;
+    transform: scale(1.15);
+}
+
+/* Container visual para grid */
+.cmenu-layout-floating-grid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, 
+        rgba(159, 122, 234, 0.1) 0%, 
+        rgba(159, 122, 234, 0.05) 50%,
+        transparent 100%);
+    border: 2px dashed rgba(159, 122, 234, 0.3);
+    border-radius: 15px;
+    pointer-events: none;
+    padding: 20px;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+/* ============================================
+  ANIMAÇÕES ESPECÍFICAS POR LAYOUT
+============================================ */
+
+/* Animação para Side Arc */
+@keyframes cmenu-side-arc-enter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0) rotate(-30deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+.cmenu-layout-side-arc .cmenu-effect-spiral {
+    animation: cmenu-side-arc-enter 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+/* Animação para Radial Line */
+@keyframes cmenu-radial-line-enter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
+    }
+}
+
+.cmenu-layout-radial-line .cmenu-effect-spiral {animation: cmenu-radial-line-enter 0.5s ease-out forwards;}
+
+/* Animação para Floating Grid */
+@keyframes cmenu-grid-enter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) translateY(-20px);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.05) translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) translateY(0);
+    }
+}
+
+.cmenu-layout-floating-grid .cmenu-effect-spiral {animation: cmenu-grid-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;}
+
+/* ============================================
+INDICADORES VISUAIS DE CONEXÃO
+============================================ */
+
+.cmenu-item-active .cmenu-item-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-parent 1.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-parent {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.2;
+    }
+}
+
+/* ============================================
+  RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+    .cmenu-center-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .cmenu-item {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .cmenu-item-button {
+        font-size: 1.2rem;
+    }
+    
+    .cmenu-center-icon {
+        font-size: 1.5rem;
+    }
+    
+    .cmenu-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .cmenu-arrow-prev {
+        left: -60px;
+    }
+    
+    .cmenu-arrow-next {
+        right: -60px;
+    }
+    
+    .cmenu-circular-menu {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cmenu-center-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .cmenu-item {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .cmenu-item-button {
+        font-size: 1rem;
+        border-width: 2px;
+    }
+    
+    .cmenu-center-icon {
+        font-size: 1.2rem;
+    }
+    
+    .cmenu-circular-menu {
+        width: 300px;
+        height: 300px;
+    }
+}
+/* ============================================
+  Z-INDEX MANAGEMENT
+============================================ */
+
+.cmenu-center-button {z-index: 1000 !important;}
+.cmenu-center-button.cmenu-dimmed {z-index: 999 !important;}
+
+/* ============================================
+  VIEWPORT ADJUSTMENT
+============================================ */
+
+/* Indicador visual sutil para itens ajustados */
+.cmenu-item.cmenu-adjusted .cmenu-item-button {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Prevenir overflow do container */
+.cmenu-container {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+/* Suavizar transição de ajuste */
+.cmenu-item.cmenu-adjusted {transition: left 0.3s ease, top 0.3s ease;}
+
+/* ============================================
+ UTILITY CLASSES
+============================================ */
+.cmenu-item-label {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(45, 80, 22, 0.95);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.cmenu-item-button:hover + .cmenu-item-label {
+    opacity: 1;
+    bottom: -35px;
+} 
+
+.cmenu-no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cmenu-hidden {display: none !important;}
+
+.cmenu-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+  ACCESSIBILITY
+============================================ */
+
+.cmenu-center-button:focus,
+.cmenu-item-button:focus,
+.cmenu-arrow:focus {
+    outline: 2px solid #4299e1;
+    outline-offset: 2px;
+}
+
+.cmenu-center-button:focus:not(:focus-visible),
+.cmenu-item-button:focus:not(:focus-visible),
+.cmenu-arrow:focus:not(:focus-visible) {outline: none;}
+
+/* ============================================
+  PRINT STYLES
+============================================ */
+
+@media print {
+    .cmenu-container {
+        display: none;
+    }
+}
