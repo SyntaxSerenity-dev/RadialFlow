@@ -1,0 +1,35 @@
+{
+  "name": "@SyntaxSerenity-dev/circular-menu-lib",
+  "version": "2.1.9",
+  "description": "Professional circular menu library with advanced customization and intelligent UX optimizations",
+  "main": "radialFlow.js",
+  "module": "radialFlow.js",
+  "license": "MIT",
+  "author": {
+    "name": "Syntax Serenity",
+    "email": "fs.developerfullstack@gmail.com",
+    "url": "https://syntaxserenity.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SyntaxSerenity-dev/circular-menu-lib.git"
+  },
+  "keywords": [
+    "circular-menu",
+    "menu",
+    "navigation",
+    "ui",
+    "component",
+    "interactive",
+    "javascript",
+    "library",
+    "circular",
+    "radial-menu",
+    "context-menu",
+    "animation"
+  ],
+  "bugs": {
+    "url": "https://github.com/SyntaxSerenity-dev/circular-menu-lib/issues"
+  },
+  "homepage": "https://github.com/SyntaxSerenity-dev/circular-menu-lib#readme"
+}
